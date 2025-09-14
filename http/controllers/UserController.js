@@ -1,5 +1,5 @@
 const User = require("../../Model/userModel");
-const jwt = require("jsonwebtoken");
+
 
 exports.create = async (req, res) => {
   try {
@@ -95,14 +95,6 @@ exports.delete = async (req, res) => {
 exports.detail = async (req, res) => {
   try {
     const detail = await User.findOne({ email: req.body.email });
-    if (!detail) {
-      res.json({
-        data: err,
-        status: 500,
-        message: "User is not Found!",
-        success: false,
-      });
-    }
     res.json({
       data: detail,
       status: 200,
